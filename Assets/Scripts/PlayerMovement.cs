@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rBody;
     public GroundSensor sensor;
+    public SpriteRenderer render;
+
+    public Animator anim;
 
     // Para asignar Mario a rigidbody2D a traves de privada 
     public Vector3 newPosition = new Vector3(50,5,0);
@@ -22,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rBody = GetComponent<Rigidbody2D>();
         //Con GetComponent asignamos la variable "Rigidbody2D" al componente en cuestion
+        render = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -60,7 +65,23 @@ public class PlayerMovement : MonoBehaviour
             
              rBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 //Si ponemos exclamacion en if(!...) le decimos que se active si el resultado es el contrario
+            anim.SetBool("IsJumping", true);
         }
+      
+        if(inputHorizontal < 0)
+    {
+        render.flipX = true;
+        anim.SetBool("IsRunning", true);
+    }
+    else if(inputHorizontal > 0)
+    {
+        render.flipX = false;
+        anim.SetBool("IsRunning", true);
+    }
+    else
+    {
+        anim.SetBool("IsRunning", false);
+    }
     }
 
     void FixedUpdate ()
