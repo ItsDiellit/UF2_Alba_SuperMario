@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Goombas
   - Bandera
+  - coin
   layers:
   - Default
   - TransparentFX
