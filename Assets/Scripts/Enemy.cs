@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Enemy : MonoBehaviour
 {
     private Rigidbody2D rBody;
@@ -48,6 +48,8 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Destroy(collision.gameObject);
+
+            SceneManager.LoadScene ("GameOver");
         }
        
         
@@ -59,6 +61,7 @@ public class Enemy : MonoBehaviour
         boxCollider.enabled = false;
         rBody.gravityScale = 0;
         enemyDirection = 0;
+        FindObjectOfType<Contador>().IncreaseGoombas();
         Destroy(gameObject, 0.5f);
     }
 }

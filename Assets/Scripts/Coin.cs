@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public AudioSource source;
+    private AudioSource source;
     public AudioClip CoinSound;
-    public Rigidbody2D rBody;
-    private BoxCollider2D boxCollider;
     // Start is called before the first frame update
     void Awake()
     {
         source = GetComponent<AudioSource>();
-        rBody = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -25,6 +21,7 @@ public class Coin : MonoBehaviour
         {
            source.clip = CoinSound;
            source.Play();
+           FindObjectOfType<Contador>().IncreaseCoins();
            Destroy(gameObject, 0.4f);
 
         }
