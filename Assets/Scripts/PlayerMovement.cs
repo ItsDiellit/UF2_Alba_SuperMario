@@ -25,6 +25,13 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioClip jumpSound;
 
+    public Transform bulletSpawn;
+    public GameObject bulletPrefab;
+
+    private bool canShoot = true;
+    public float timer;
+    public float rateOffire = 1f;
+
     void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
@@ -65,23 +72,37 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("afsdg");
         }*/
 //Getbutton Down para cuando pulsas el boton getbuttonup cuando sueltas y getbutton cuando mantienes la tecla
-        if(Input.GetButtonDown("Jump") && sensor.isGrounded == true )
-        { 
-            
-             rBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                //Si ponemos exclamacion en if(!...) le decimos que se active si el resultado es el contrario
-            anim.SetBool("IsJumping", true);
-            source.PlayOneShot(jumpSound);
-        }
+        
       
-        if(inputHorizontal < 0)
+     
+
+    Shoot();
+    Movement();
+    Jump();
+
+    }
+
+    void FixedUpdate ()
     {
-        render.flipX = true;
+
+        rBody.velocity = new Vector2(inputHorizontal * movementSpeed , rBody.velocity.y);
+
+    }
+
+
+
+    void Movement()
+    {
+           if(inputHorizontal < 0)
+    {
+        //render.flipX = true;
+        transform.rotation = Quaternion.Euler(0, 180, 0);
         anim.SetBool("IsRunning", true);
     }
     else if(inputHorizontal > 0)
     {
-        render.flipX = false;
+       // render.flipX = false;
+       transform.rotation = Quaternion.Euler(0, 0, 0);
         anim.SetBool("IsRunning", true);
     }
     else
@@ -90,10 +111,37 @@ public class PlayerMovement : MonoBehaviour
     }
     }
 
-    void FixedUpdate ()
+
+    void Jump()
     {
+        if(Input.GetButtonDown("Jump") && sensor.isGrounded == true )
+        { 
+            
+             rBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                //Si ponemos exclamacion en if(!...) le decimos que se active si el resultado es el contrario
+            anim.SetBool("IsJumping", true);
+            source.PlayOneShot(jumpSound);
+        }
+    }
 
-        rBody.velocity = new Vector2(inputHorizontal * movementSpeed , rBody.velocity.y);
 
+    void Shoot()
+    {
+        if(!canShoot)
+        {
+            timer += Time.deltaTime;
+            if(timer >= rateOffire)
+            {
+                canShoot = true;
+                timer = 0;
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.F) && canShoot)
+        {
+            Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            canShoot = false;
+
+
+        }
     }
 }
