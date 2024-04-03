@@ -5,31 +5,54 @@ using UnityEngine;
 public class ScriptDePrueba : MonoBehaviour
 {
 
-    public int vidasPersonaje = 5;
-
-    public int vidasPersonaje2 = 3;
-
+    public int livesCharacter = 3;
+    public int livesCharacter2 = 4;
     public float numeroDecimal = 4.5f;
+    public string nameCharacter = "Mario";
+    public bool interruptor = true;
+    public int[] arrayNumeros;
+    private int[] arrayNumeros2 = new int[6];
+    private int[] arrayNumeros3 = {7, 8, 3, 9};
+    private string [] arrayStrings = new string[7];
+    private string [] arrayStrings2 = {"Hola", "adios"};
 
-    public string nombrePersonaje = "Nombre de nuestro personaje";
+    private int[,] array2Dimensiones = new int[4, 2];
+    
 
-    private bool interruptor = false;
+    public List<string> stringList;
+
+    private List<int> intList = new List<int>(7);
+    private List<int> intList2 = new List<int>() {7, 9, 6, 78, 25, 0, 2};
+
+
     // Start is called before the first frame update
     void Start()
     {
-      vidasPersonaje = 10;
-      numeroDecimal = 7.45f;
-      nombrePersonaje = "asasas";
-      interruptor = true;
+      Debug.Log(arrayNumeros[0]);
+      arrayNumeros2[0] = 4;
 
-      int suma = vidasPersonaje + vidasPersonaje2;
-      Debug.Log(suma);
-      string sumaTextos = nombrePersonaje + "qqqqqqqqqq";
-      Debug.Log(sumaTextos);
+      Debug.Log(array2Dimensiones[0, 1]);
 
-      Debug.Log(nombrePersonaje);
-      Debug.Log(vidasPersonaje);
-      Debug.Log(numeroDecimal);
+      
+
+      intList2.Add(10);
+      intList2.RemoveAt(2);
+      intList2.Remove(78);
+      intList2.Insert(5, 888);
+
+       /* livesCharacter = 10;
+        numeroDecimal = 7.54f;
+        nameCharacter = "Luigy";
+        interruptor = false;
+
+        int suma = livesCharacter + livesCharacter2;
+        Debug.Log(suma);
+        string sumaTextos = nameCharacter + "Warrio";
+        Debug.Log(sumaTextos);
+
+      Debug.Log(nameCharacter);
+      Debug.Log(livesCharacter);
+      Debug.Log(numeroDecimal);  */
     }
 
     // Update is called once per frame

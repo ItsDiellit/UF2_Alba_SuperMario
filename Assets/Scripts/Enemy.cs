@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     public float enemySpeed = 5;
 
-    public float enemyDirection = 1;
+    public float enemyDirection = -1;
     // Start is called before the first frame update
     void Awake()
     {

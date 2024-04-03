@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefab;
 
-    public Transform spawnPoint;
+    public Transform[] spawnPoint;
 
     public float spawnRate = 0.5f;
 
@@ -36,8 +36,13 @@ public class EnemySpawn : MonoBehaviour
 
         if(timer >= waitTime)
         {
-             Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+ //Esto es para cuando la variable era normal
+            //Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);//
 
+            //Esto es para el array
+           Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], spawnPoint[0].position, spawnPoint[0].rotation);
+            Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], spawnPoint[1].position, spawnPoint[1].rotation);
+            Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], spawnPoint[2].position, spawnPoint[2].rotation);
              timer = 0;
         }
        
