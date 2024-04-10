@@ -40852,6 +40852,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1505277048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1505277049}
+  m_Layer: 0
+  m_Name: AttackHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1505277049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505277048}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.15, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1220797527}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1506581367
 GameObject:
   m_ObjectHideFlags: 0
@@ -58576,13 +58607,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7430272791728054404, guid: f3b28676af1023d4bbecaf8c7f5a7135, type: 3}
+      propertyPath: hitBox
+      value: 
+      objectReference: {fileID: 1505277049}
+    - target: {fileID: 7430272791728054404, guid: f3b28676af1023d4bbecaf8c7f5a7135, type: 3}
+      propertyPath: hitBoxRadius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8359456111922375254, guid: f3b28676af1023d4bbecaf8c7f5a7135, type: 3}
       propertyPath: m_Name
       value: Mario_0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6718305874741967603, guid: f3b28676af1023d4bbecaf8c7f5a7135, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1505277049}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3b28676af1023d4bbecaf8c7f5a7135, type: 3}
 --- !u!1660057539 &9223372036854775807

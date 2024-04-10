@@ -28,6 +28,7 @@ public class ScriptDePrueba : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      /*
       Debug.Log(arrayNumeros[0]);
       arrayNumeros2[0] = 4;
 
@@ -53,6 +54,34 @@ public class ScriptDePrueba : MonoBehaviour
       Debug.Log(nameCharacter);
       Debug.Log(livesCharacter);
       Debug.Log(numeroDecimal);  */
+
+
+     /* for (int i = 0; i < 5; i++)
+      {
+        Debug.Log("srfedgr");
+
+      }
+      
+
+      int i = 0;
+      while ( i < 5)
+      {
+        Debug.Log("i");
+        i++;
+
+      }
+
+      do
+      {
+        Debug.Log(i);
+        i++;
+      }while (i < 5);*/
+
+      foreach (int numero in arrayNumeros3)
+      {
+        Debug.Log(numero);
+
+      }
     }
 
     // Update is called once per frame
