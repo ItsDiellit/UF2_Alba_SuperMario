@@ -58657,6 +58657,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1505277049}
     - target: {fileID: 7430272791728054404, guid: f3b28676af1023d4bbecaf8c7f5a7135, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bcb11510fca74e341903290d30bae8fd, type: 3}
+    - target: {fileID: 7430272791728054404, guid: f3b28676af1023d4bbecaf8c7f5a7135, type: 3}
       propertyPath: hitBoxRadius
       value: 1
       objectReference: {fileID: 0}

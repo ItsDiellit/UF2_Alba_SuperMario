@@ -49,9 +49,17 @@ public class Enemy : MonoBehaviour
 
         if(collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
+          PlayerMovement playerScript = collision.gameObject.GetComponent<PlayerMovement>();
+         
+          //playerScript.Death();
 
-            SceneManager.LoadScene ("GameOver");
+          if(playerScript.isDeath == false)
+          {
+            
+            playerScript.StartCoroutine("Die");
+
+          }
+
         }
        
         

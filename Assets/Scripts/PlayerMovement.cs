@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rBody;
     public GroundSensor sensor;
     public SpriteRenderer render;
+    public AudioClip deathSound;
 
     public Animator anim;
 
@@ -34,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform hitBox;
     public float hitBoxRadius = 2;
+
+    public bool isDeath = false;
 
     void Awake()
     {
@@ -167,6 +170,25 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+    }
+    public void Death()
+    {
+        source.PlayOneShot(deathSound);
+        SceneManager.LoadScene("GameOver");
+
+        StartCoroutine(Die());
+    }
+
+    public IEnumerator Die()
+    {
+        isDeath = true;
+        source.PlayOneShot(deathSound);
+        //Time.timescale = 0;
+        yield return new WaitForSeconds(2);
+        //yield return new WaitForSecondsRealtime(2);
+        //yield return null;
+
+        SceneManager.LoadScene("GameOver");
     }
     void OnDrawGizmos()
     {
