@@ -82,12 +82,13 @@ public class PlayerMovement : MonoBehaviour
       
      
 
-    Shoot();
+    //Shoot();
     Movement();
     Jump();
     if(Input.GetKeyDown(KeyCode.J))
     {
         //Attack();
+        Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         anim.SetTrigger("IsAttacking");
     }
 
@@ -103,8 +104,8 @@ public class PlayerMovement : MonoBehaviour
 
 
     void Movement()
-    {
-           if(inputHorizontal < 0)
+   {
+        /*    if(inputHorizontal < 0)
     {
         //render.flipX = true;
         transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -119,9 +120,28 @@ public class PlayerMovement : MonoBehaviour
     else
     {
         anim.SetBool("IsRunning", false);
-    }
+    }*/
+     
+     if(inputHorizontal < 0)
+     {
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+        anim.SetBool("IsRunning", true);
+
+
+     }
+
+     else if(inputHorizontal > 0)
+     {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        anim.SetBool("IsRunning", true);
+     }
+     else
+     {
+        anim.SetBool("IsRunning", false);
+     }
     }
 
+   
 
     void Jump()
     {
@@ -130,13 +150,15 @@ public class PlayerMovement : MonoBehaviour
             
              rBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 //Si ponemos exclamacion en if(!...) le decimos que se active si el resultado es el contrario
-            anim.SetBool("IsJumping", true);
+            //anim.SetBool("IsJumping", true);
             source.PlayOneShot(jumpSound);
+
+            anim.SetBool("IsJumping", true);
         }
     }
 
 
-    void Shoot()
+  /*  void Shoot()
     {
         if(!canShoot)
         {
@@ -154,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
-    }
+    }*/
 
    public void Attack()
     {
